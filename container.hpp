@@ -6,13 +6,14 @@
 
 namespace ft
 {
+	// template <class T, class Alloc = std::allocator<T>>
 	template <class T>
 	class vector
 	{
 	private:
-		/* data */
+		std::allocator<T>	data;
 	public:
-		vector() {
+		vector() : data() {
 
 		};
 
