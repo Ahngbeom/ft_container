@@ -9,13 +9,14 @@ int main(void)
 	test.push_back(1);
 	test.push_back(3);
 	test.push_back(5);
-
-	ft::vector<int> my_vector;
 	
 	for (std::vector<int>::iterator i = test.begin(); i < test.end(); i++)
 	{
 		std::cout << *i << std::endl;
 	}
-	
+
+	ft::vector<int> my_vector;
+
+
 	return 0;
 }
