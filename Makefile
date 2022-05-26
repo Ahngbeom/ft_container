@@ -5,7 +5,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 INCFLAGS = -I ./include
 
 SRSC_DIR = ./
-SRCS_FILENAME = main.cpp
+SRCS_FILENAME = my_main.cpp
 SRCS = $(addprefix $(SRSC_DIR), $(SRCS_FILENAME))
 OBJS = $(SRCS:.cpp=.o)
 
