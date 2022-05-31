@@ -40,13 +40,13 @@ namespace ft
 			return *(temp - 1);
 		};
 
-		// reverse_iterator	operator+(iterator_type	n) const {
-		// 	return reverse_iterator(this->_base_iter - n);
-		// };
+		reverse_iterator	operator+(difference_type n) const {
+			return reverse_iterator(this->_base_iter - n);
+		};
 
-		// reverse_iterator	operator-(iterator_type	n) const {
-		// 	return reverse_iterator(this->_base_iter + n);
-		// };
+		reverse_iterator	operator-(difference_type n) const {
+			return reverse_iterator(this->_base_iter + n);
+		};
 	};
 	
 }

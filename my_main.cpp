@@ -113,8 +113,7 @@ int main(void)
 	// data_CHECK(default_orig_vector, default_my_vector);
 
 	std::cout << *default_my_vector.rbegin() << std::endl;
-	std::cout << *(default_my_vector.end() - 1) << std::endl;
-	// std::cout << *(default_my_vector.rend() - 1) << std::endl;
+	std::cout << *(default_my_vector.rend() - 1) << std::endl;
 	std::cout << std::endl;
 
 	// std::vector<int> fill_orig_vector(3, 5);
