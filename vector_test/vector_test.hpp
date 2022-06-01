@@ -25,6 +25,10 @@
 namespace test {
 
 	/****************** Iterator ******************/
+	void	begin(std::vector<int>& origin, ft::vector<int>& mine);
+	void	end(std::vector<int>& origin, ft::vector<int>& mine);
+	void	rbegin(std::vector<int>& origin, ft::vector<int>& mine);
+	void	rend(std::vector<int>& origin, ft::vector<int>& mine);
 	void	iterator(std::vector<int>& origin, ft::vector<int>& mine);
 	void	reverse_iterator(std::vector<int>& origin, ft::vector<int>& mine);
 
@@ -45,53 +49,114 @@ namespace test {
 	/**********************************************/
 	/****************** Iterator ******************/
 	/**********************************************/
-	void	iterator(std::vector<int>& origin, ft::vector<int>& mine) {
+	void	begin(std::vector<int>& origin, ft::vector<int>& mine) {
 		std::cout << YELLOW;
 
 		// std::cout << "std::vector<int> *begin(): " << *default_orig_vector.begin() << std::endl; // segmentation fault
 		if (origin.size() > 0 && mine.size() > 0) {
-			std::cout << "std::vector<int> value of begin() & end(): " << *origin.begin() << ", " << *(origin.end() - 1) << std::endl;
-			std::cout << "ft::vector<int> value of begin() & end(): " << *mine.begin() << ", " << *(mine.end() - 1) << std::endl;
+			std::cout << "std::vector<int> value of begin(): " << *origin.begin() << std::endl;
+			std::cout << "ft::vector<int> value of begin(): " << *mine.begin() << std::endl;
 		} else {
 			std::cout << RED << "vectors are empty" << RESET << std::endl;
-			empty(origin, mine);
+			// empty(origin, mine);
+		}
+
+		std::cout << RESET;
+	}
+
+	void	end(std::vector<int>& origin, ft::vector<int>& mine) {
+		std::cout << YELLOW;
+
+		// std::cout << "std::vector<int> *begin(): " << *default_orig_vector.begin() << std::endl; // segmentation fault
+		if (origin.size() > 0 && mine.size() > 0) {
+			std::cout << "std::vector<int> value of end(): " << *(origin.end() - 1) << std::endl;
+			std::cout << "ft::vector<int> value of end(): " << *(mine.end() - 1) << std::endl;
+		} else {
+			std::cout << RED << "vectors are empty" << RESET << std::endl;
+			// empty(origin, mine);
+		}
+
+		std::cout << RESET;
+	}
+
+	void	rbegin(std::vector<int>& origin, ft::vector<int>& mine) {
+		std::cout << YELLOW;
+
+		// std::cout << "std::vector<int> *begin(): " << *default_orig_vector.begin() << std::endl; // segmentation fault
+		if (origin.size() > 0 && mine.size() > 0) {
+			std::cout << "std::vector<int> value of begin(): " << *origin.rbegin() << std::endl;
+			std::cout << "ft::vector<int> value of begin(): " << *mine.rbegin() << std::endl;
+		} else {
+			std::cout << RED << "vectors are empty" << RESET << std::endl;
+			// empty(origin, mine);
+		}
+
+		std::cout << RESET;
+	}
+
+	void	rend(std::vector<int>& origin, ft::vector<int>& mine) {
+		std::cout << YELLOW;
+
+		// std::cout << "std::vector<int> *begin(): " << *default_orig_vector.begin() << std::endl; // segmentation fault
+		if (origin.size() > 0 && mine.size() > 0) {
+			std::cout << "std::vector<int> value of end(): " << *(origin.rend() - 1) << std::endl;
+			std::cout << "ft::vector<int> value of end(): " << *(mine.rend() - 1) << std::endl;
+		} else {
+			std::cout << RED << "vectors are empty" << RESET << std::endl;
+			// empty(origin, mine);
+		}
+
+		std::cout << RESET;
+	}
+
+	void	iterator(std::vector<int>& origin, ft::vector<int>& mine) {
+		std::cout << YELLOW;
+
+		std::cout << "std::vector<int> iterator: "; 
+		for (std::vector<int>::iterator it = origin.begin(); it != origin.end(); it++) {
+			std::cout << *it;
+			if (it != origin.end() - 1) {
+				std::cout << ", ";
+			} else {
+				std::cout << std::endl;
+			}
+		}
+
+		std::cout << "ft::vector<int> iterator: "; 
+		for (ft::vector<int>::iterator it = mine.begin(); it != mine.end(); it++) {
+			std::cout << *it;
+			if (it != mine.end() - 1) {
+				std::cout << ", ";
+			} else {
+				std::cout << std::endl;
+			}
 		}
 
 		std::cout << RESET;
 	}
 
 	void	reverse_iterator(std::vector<int>& origin, ft::vector<int>& mine) {
-		std::cout << CYAN;
-		if (origin.size() > 0) {
-			std::cout << "std::vector<int> reverse_iterator  value of rbegin() & rend(): " << *origin.rbegin() << ", " << *(origin.rend() - 1) << std::endl;
-		}
-		if (mine.size() > 0) {
-			std::cout << "ft::vector<int> reverse_iterator  value of rbegin() & rend(): " << *mine.rbegin() << ", " << *(mine.rend() - 1) << std::endl;
-		}
+		std::cout << YELLOW;
 
-		// rdata_all(origin, mine);
-		std::cout << "std::vector<int> reverse data: "; 
+		std::cout << "std::vector<int> reverse_iterator: "; 
 		for (std::vector<int>::reverse_iterator it = origin.rbegin(); it != origin.rend(); it++) {
 			std::cout << *it;
 			if (it != origin.rend() - 1) {
 				std::cout << ", ";
 			} else {
-				std::cout << "\n";
+				std::cout << std::endl;
 			}
 		}
 
-		// std::cout << *(mine.rend() - 1) << std::endl;
-
-		std::cout << "ft::vector<int> reverse data: "; 
+		std::cout << "ft::vector<int> reverse_iterator: "; 
 		for (ft::vector<int>::reverse_iterator it = mine.rbegin(); it != mine.rend(); it++) {
 			std::cout << *it;
-			if (it != (mine.rend() - 1)) {
+			if (it != mine.rend() - 1) {
 				std::cout << ", ";
 			} else {
-				std::cout << "\n";
+				std::cout << std::endl;
 			}
 		}
-
 
 		std::cout << RESET;
 	}

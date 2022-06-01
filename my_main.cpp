@@ -11,44 +11,55 @@
 
 int main(void)
 {
-	std::cout << "========== vector<int> TEST ==========" << std::endl;
-	std::vector<int> default_orig_vector;
-	ft::vector<int> default_my_vector;
-	
-	test::iterator(default_orig_vector, default_my_vector);
+	{
+		std::cout << "========== default vector<int> TEST ==========" << std::endl;
+		std::vector<int> orig_default_vector;
+		ft::vector<int> my_default_vector;
+		
 
-	for (int i = 1; i <= 5; i++) {
-		default_orig_vector.push_back(i);
-		default_my_vector.push_back(i);
-		test::capacity(default_orig_vector, default_my_vector);
+		for (int i = 1; i <= 5; i++) {
+			orig_default_vector.push_back(i);
+			my_default_vector.push_back(i);
+		}
+		test::capacity(orig_default_vector, my_default_vector);
+
+		test::begin(orig_default_vector, my_default_vector);
+		test::end(orig_default_vector, my_default_vector);
+		test::rbegin(orig_default_vector, my_default_vector);
+		test::rend(orig_default_vector, my_default_vector);
+		test::iterator(orig_default_vector, my_default_vector);
+		test::reverse_iterator(orig_default_vector, my_default_vector);
+
+		test::size(orig_default_vector, my_default_vector);
+		test::max_size(orig_default_vector, my_default_vector);
+		test::capacity(orig_default_vector, my_default_vector);
+		test::resize(orig_default_vector, my_default_vector, 3);
+		test::iterator(orig_default_vector, my_default_vector);
+		test::resize(orig_default_vector, my_default_vector, 5);
+		test::iterator(orig_default_vector, my_default_vector);
+
+		std::cout << std::endl;
 	}
 
-	test::iterator(default_orig_vector, default_my_vector);
+	{
+		std::cout << "========== fill vector<int> TEST ==========" << std::endl;
+		std::vector<int> orig_fill_vector(3, 5);
+		ft::vector<int> my_fill_vector(3, 5);
+		
+		test::size(orig_fill_vector, my_fill_vector);
+		test::max_size(orig_fill_vector, my_fill_vector);
+		test::capacity(orig_fill_vector, my_fill_vector);
+		test::iterator(orig_fill_vector, my_fill_vector);
 
-	test::data_all(default_orig_vector, default_my_vector);
-	test::rdata_all(default_orig_vector, default_my_vector);
+		test::begin(orig_fill_vector, my_fill_vector);
+		test::end(orig_fill_vector, my_fill_vector);
+		test::rbegin(orig_fill_vector, my_fill_vector);
+		test::rend(orig_fill_vector, my_fill_vector);
+		test::iterator(orig_fill_vector, my_fill_vector);
+		test::reverse_iterator(orig_fill_vector, my_fill_vector);
 
-	test::size(default_orig_vector, default_my_vector);
-	test::max_size(default_orig_vector, default_my_vector);
-	test::capacity(default_orig_vector, default_my_vector);
-	test::resize(default_orig_vector, default_my_vector, 3);
-	test::capacity(default_orig_vector, default_my_vector);
-	test::data_all(default_orig_vector, default_my_vector);
-	test::resize(default_orig_vector, default_my_vector, 5);
-	test::capacity(default_orig_vector, default_my_vector);
-	test::data_all(default_orig_vector, default_my_vector);
-	test::capacity(default_orig_vector, default_my_vector);
-	test::empty(default_orig_vector, default_my_vector);
-
-
-	// test::reverse_iterator(default_orig_vector, default_my_vector);
-	// test::capacity(default_orig_vector, default_my_vector);
-
-	// ft::data(default_orig_vector, default_my_vector);
-
-
-
-	std::cout << std::endl;
+		std::cout << std::endl;
+	}
 
 	// std::vector<int> fill_orig_vector(3, 5);
 	// ft::vector<int> fill_my_vector(3, 5);
