@@ -261,7 +261,8 @@ namespace ft
 
 		// Modifiers
 		void	push_back(const value_type& val) {
-			this->reserve(this->_size + 1);
+			if (size() + 1 > capacity())
+				this->reserve(capacity() == 0 ? 1 : capacity() * 2);
 			this->_allocator.construct(this->_first + this->_size, val);
 			++this->_size;
 		}
