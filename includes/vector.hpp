@@ -74,7 +74,7 @@ namespace ft
 
 				reference operator++() {
 					this->_ptr += 1;
-					return this->_ptr;
+					return *this->_ptr;
 				}
 
 				pointer operator++(int) {
@@ -82,6 +82,18 @@ namespace ft
 					this->_ptr += 1;
 					return temp;
 				}
+
+				reference operator--() {
+					this->_ptr -= 1;
+					return *this->_ptr;
+				}
+
+				pointer operator--(int) {
+					pointer	temp = this->_ptr;
+					this->_ptr -= 1;
+					return temp;
+				}
+
 
 		};
 
@@ -112,29 +124,29 @@ namespace ft
 	public:
 		explicit vector(const allocator_type &alloc = allocator_type()) : _first(NULL), _size(0), _capacity(0), _allocator(alloc)
 		{
-			std::cout << "[ft::vector Default Constructor Called(";
-			this->_first == NULL ? (std::cout << "NULL"
-											  << ", ")
-								 : (std::cout << this->_first << ", ");
-			std::cout << this->_size << ", ";
-			std::cout << this->_capacity << ")]" << std::endl;
-			std::cout << "---------------------------------------------------------------\n";
+			// std::cout << "[ft::vector Default Constructor Called(";
+			// this->_first == NULL ? (std::cout << "NULL"
+			// 								  << ", ")
+			// 					 : (std::cout << this->_first << ", ");
+			// std::cout << this->_size << ", ";
+			// std::cout << this->_capacity << ")]" << std::endl;
+			// std::cout << "---------------------------------------------------------------\n";
 			// std::cout << this->_allocator << std::endl;
 		};
 
 		explicit vector(size_type n, const_reference val = value_type(), const allocator_type &alloc = allocator_type()) : _size(n), _capacity(n), _allocator(alloc)
 		{
-			std::cout << "[ft::vector Fill Constructor Called(";
+			// std::cout << "[ft::vector Fill Constructor Called(";
 			this->_first = _allocator.allocate(n);
 			for (size_type i = 0; i < n; i++)
 			{
 				_allocator.construct(this->_first + i, val);
-				if (i < n - 1)
-					std::cout << *(this->_first + i) << ", ";
-				else
-					std::cout << *(this->_first + i) << ")]\n";
+				// if (i < n - 1)
+				// 	std::cout << *(this->_first + i) << ", ";
+				// else
+				// 	std::cout << *(this->_first + i) << ")]\n";
 			}
-			std::cout << "---------------------------------------------------------------\n";
+			// std::cout << "---------------------------------------------------------------\n";
 		}
 
 		// template <class InputIterator>
@@ -178,7 +190,7 @@ namespace ft
 		}
 		
 		const_reverse_iterator rbegin() const {
-			return const_reverse_iterator(this->_first + this->_size);
+			return const_reverse_iterator(this->end());
 		}
 
 		reverse_iterator rend() {
@@ -219,21 +231,21 @@ namespace ft
 				this->_capacity = n;
 				this->_first = new_cap;
 			}
-		}
+		};
 
 		void resize(size_type n, value_type val = value_type()) {
 			if (n < this->_size) {
 				for (size_type i = n; i < this->_size; i++) {
-					_allocator.destroy(this->_first + i);
+					this->_allocator.destroy(this->_first + i);
 				}
 				this->_size = n;
 			}
 			else if (n > this->_size) {
-				if (_capacity < n)
+				if (this->_capacity < n)
 				 	// vector의 크기를 조정할 때 size가 capacity를 넘어가려할 경우 미리 _capacity의 최소 2배 크기를 확보한다.
-					this->reserve(_capacity * 2 > n ? _capacity * 2 : n);
-				for (size_type i = _size; i < n; i++) {
-					_allocator.construct(this->_first + i, val);
+					this->reserve(this->_capacity * 2 > n ? this->_capacity * 2 : n);
+				for (size_type i = this->_size; i < n; i++) {
+					this->_allocator.construct(this->_first + i, val);
 					this->_size++;
 				}
 			}
@@ -245,15 +257,6 @@ namespace ft
 
 		bool empty() const {
 			return this->_capacity == 0;
-		};
-
-		// Element access
-		pointer	data() {
-			return this->_first;
-		};
-
-		const_pointer	data() const {
-			return this->_first;
 		};
 
 		// Modifiers

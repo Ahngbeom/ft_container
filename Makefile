@@ -2,7 +2,7 @@ NAME = a.out
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
-INCFLAGS = -I ./includes
+INCFLAGS = -I ./includes -I ./vector_test
 
 SRSC_DIR = ./srcs/
 SRCS_FILENAME = #ft_vector.cpp
