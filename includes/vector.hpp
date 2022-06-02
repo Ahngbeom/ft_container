@@ -93,7 +93,7 @@ namespace ft
 					this->_allocator.construct(this->_first + i, *(x.begin() + i));
 				}
 				return *this;
-			}
+			};
 
 			// The copy constructor creates a container that keeps and uses a copy of x's allocator.
 			vector (const vector& x) : _size(0), _capacity(0) {
@@ -130,19 +130,19 @@ namespace ft
 
 			reverse_iterator rbegin() {
 				return reverse_iterator(this->end());
-			}
+			};
 			
 			const_reverse_iterator rbegin() const {
 				return const_reverse_iterator(this->end());
-			}
+			};
 
 			reverse_iterator rend() {
 				return reverse_iterator(this->begin());
-			}
+			};
 			
 			const_reverse_iterator rend() const {
 				return const_reverse_iterator(this->begin());
-			}
+			};
 
 			// Capacity
 			size_type size() const {
@@ -264,14 +264,14 @@ namespace ft
 					this->reserve(capacity() == 0 ? 1 : capacity() * 2);
 				this->_allocator.construct(this->_first + this->_size, val);
 				++this->_size;
-			}
+			};
 
 			void clear() {
 				for (size_type i = 0; i < this->size(); i++) {
 					this->_allocator.destroy(this->_first + i);
 				}
 				this->_size = 0;
-			}
+			};
 	};
 
 }
