@@ -40,6 +40,9 @@ namespace test {
 	void	empty(std::vector<int>& origin, ft::vector<int>& mine);
 	void	reserve(std::vector<int>& origin, ft::vector<int>& mine, std::size_t n);
 
+	/*************** Element Access ***************/
+	
+	
 	/******************** Utils *******************/
 	void	data_all(std::vector<int>& origin, ft::vector<int>& mine);
 	void	rdata_all(std::vector<int>& origin, ft::vector<int>& mine);
@@ -112,28 +115,92 @@ namespace test {
 	void	iterator(std::vector<int>& origin, ft::vector<int>& mine) {
 		std::cout << YELLOW;
 
-		std::cout << "std::vector<int> iterator: "; 
-		for (std::vector<int>::iterator it = origin.begin(); it != origin.end(); it++) {
-			std::cout << *it;
-			if (it != origin.end() - 1) {
-				std::cout << ", ";
-			} else {
-				std::cout << std::endl;
+		if (origin.size() > 0) {
+			std::cout << "std::vector<int> iterator: "; 
+			for (std::vector<int>::iterator it = origin.begin(); it != origin.end(); it++) {
+				std::cout << *it;
+				if (it != origin.end() - 1) {
+					std::cout << ", ";
+				} else {
+					std::cout << std::endl;
+				}
 			}
-		}
+		} else { std::cout << "origin vector is empty" << std::endl; };
 
-		std::cout << "ft::vector<int> iterator: "; 
-		for (ft::vector<int>::iterator it = mine.begin(); it != mine.end(); it++) {
-			std::cout << *it;
-			if (it != mine.end() - 1) {
-				std::cout << ", ";
-			} else {
-				std::cout << std::endl;
+		if (mine.size() > 0) {
+			std::cout << "ft::vector<int> iterator: "; 
+			for (ft::vector<int>::iterator it = mine.begin(); it != mine.end(); it++) {
+				std::cout << *it;
+				if (it != mine.end() - 1) {
+					std::cout << ", ";
+				} else {
+					std::cout << std::endl;
+				}
 			}
-		}
+		} else { std::cout << "my vector is empty" << std::endl; };
 
 		std::cout << RESET;
-	}
+	};
+
+	void	iterator(std::vector<int>& origin, std::vector<int>& copy) {
+		std::cout << YELLOW;
+
+		if (origin.size() > 0) {
+			std::cout << "std::vector<int> iterator of origin vector: "; 
+			for (std::vector<int>::iterator it = origin.begin(); it != origin.end(); it++) {
+				std::cout << *it;
+				if (it != origin.end() - 1) {
+					std::cout << ", ";
+				} else {
+					std::cout << std::endl;
+				}
+			}
+		} else { std::cout << "origin vector is empty" << std::endl; };
+
+		if (copy.size() > 0) {
+			std::cout << "std::vector<int> iterator of copy vector: "; 
+			for (std::vector<int>::iterator it = copy.begin(); it != copy.end(); it++) {
+				std::cout << *it;
+				if (it != copy.end() - 1) {
+					std::cout << ", ";
+				} else {
+					std::cout << std::endl;
+				}
+			}
+		} else { std::cout << "copy vector is empty" << std::endl; };
+
+		std::cout << RESET;
+	};
+
+	void	iterator(ft::vector<int>& origin, ft::vector<int>& copy) {
+		std::cout << LGRAY;
+
+		if (origin.size() > 0) {
+			std::cout << "ft::vector<int> iterator of origin vector: "; 
+			for (ft::vector<int>::iterator it = origin.begin(); it != origin.end(); it++) {
+				std::cout << *it;
+				if (it != origin.end() - 1) {
+					std::cout << ", ";
+				} else {
+					std::cout << std::endl;
+				}
+			}
+		} else { std::cout << "origin vector is empty" << std::endl; };
+
+		if (copy.size() > 0) {
+			std::cout << "ft::vector<int> iterator of copy vector: "; 
+			for (ft::vector<int>::iterator it = copy.begin(); it != copy.end(); it++) {
+				std::cout << *it;
+				if (it != copy.end() - 1) {
+					std::cout << ", ";
+				} else {
+					std::cout << std::endl;
+				}
+			}
+		} else { std::cout << "copy vector is empty" << std::endl; };
+
+		std::cout << RESET;
+	};
 
 	void	reverse_iterator(std::vector<int>& origin, ft::vector<int>& mine) {
 		std::cout << YELLOW;
@@ -212,6 +279,45 @@ namespace test {
 	}
 
 
+	/**********************************************/
+	/*************** Element Access ***************/
+	/**********************************************/
+	void	operator_array(std::vector<int>& origin, ft::vector<int>& mine, std::size_t n) {
+		std::cout << CYAN;
+		std::cout << "std::vector<int> operator[" << n << "]: " << origin[n] << std::endl; 
+		std::cout << "ft::vector<int> operator[" << n << "]: " << mine[n] << std::endl; 
+		std::cout << RESET;
+	}
+
+	void	at(std::vector<int>& origin, ft::vector<int>& mine, std::size_t n) {
+		std::cout << CYAN;
+		// (void)origin;
+		try {
+			std::cout << "std::vector<int> at(" << n << "): " << origin.at(n) << std::endl; 
+		} catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+		try {
+			std::cout << "ft::vector<int> at(" << n << "): " << mine.at(n) << std::endl; 
+		} catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+		std::cout << RESET;
+	}
+
+	void	front(std::vector<int>& origin, ft::vector<int>& mine) {
+		std::cout << CYAN;
+		std::cout << "std::vector<int> front(): " << origin.front() << std::endl; 
+		std::cout << "ft::vector<int> front(): " << mine.front() << std::endl; 
+		std::cout << RESET;
+	}
+
+	void	back(std::vector<int>& origin, ft::vector<int>& mine) {
+		std::cout << CYAN;
+		std::cout << "std::vector<int> back(): " << origin.back() << std::endl; 
+		std::cout << "ft::vector<int> back(): " << mine.back() << std::endl; 
+		std::cout << RESET;
+	}
 
 	/**********************************************/
 	/******************** Utils *******************/
