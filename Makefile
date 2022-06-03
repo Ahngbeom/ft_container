@@ -1,27 +1,30 @@
 NAME = a.out
 
+MAIN = main.cpp
+
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS = #-Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
 INCFLAGS = -I ./includes -I ./vector_test
 
-SRSC_DIR = ./srcs/
+SRSC_DIR = #./srcs/
 SRCS_FILENAME = #ft_vector.cpp
-SRCS = $(addprefix $(SRSC_DIR), $(SRCS_FILENAME)) ./my_main.cpp
+SRCS = $(addprefix $(SRSC_DIR), $(SRCS_FILENAME)) $(MAIN)
 OBJS = $(SRCS:.cpp=.o)
+
 
 all		: $(NAME)
 
 .cpp.o	:
-		@ $(CXX) $(CXXFLAGS) $(INCFLAGS) -c $< -o $@
+	@ $(CXX) $(CXXFLAGS) $(INCFLAGS) -c $< -o $@
 
 $(NAME)	: $(OBJS)
-		@ $(CXX) $(CXXFLAGS) $(INCFLAGS) $^ -o $@
+	@ $(CXX) $(CXXFLAGS) $(INCFLAGS) $^ -o $@
 
 clean	:
-		@ $(RM) $(OBJS)
+	@ $(RM) $(OBJS)
 
 fclean	: clean
-		@ $(RM) $(NAME)
+	@ $(RM) $(NAME)
 
 re		: fclean all
 

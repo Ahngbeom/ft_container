@@ -1,5 +1,5 @@
-#ifndef CONTAINER_HPP
-# define CONTAINER_HPP
+#ifndef VECTOR_HPP
+# define VECTOR_HPP
 
 // # include <iostream>
 
@@ -10,6 +10,7 @@
 # include <exception>
 
 # include "iterator_traits.hpp"
+# include "iterator.hpp"
 # include "reverse_iterator.hpp"
 # include "RandomAccessIterator.hpp"
 
@@ -95,18 +96,17 @@ namespace ft
 				return *this;
 			};
 
+			// Copy Constructor
 			// The copy constructor creates a container that keeps and uses a copy of x's allocator.
-			vector (const vector& x) : _size(0), _capacity(0) {
-				*this = x;
-			};
+			vector (const vector& x) : _size(0), _capacity(0) { *this = x; };
 
+			// Destructor
 			~vector() {
 				std::cout << "Destructor: " << this;
 				std::cout << "(size(): " << this->size();
 				std::cout << ", capacity(): " << this->capacity() << ")" << std::endl;
-				for (size_type i = 0; i < this->size(); i++) {
+				for (size_type i = 0; i < this->size(); i++)
 					this->_allocator.destroy(this->_first + i);
-				}
 				if (this->capacity() > 0)
 					this->_allocator.deallocate(this->_first, this->capacity());
 			};
