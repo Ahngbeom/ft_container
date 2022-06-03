@@ -250,14 +250,14 @@ namespace ft
 			};
 
 			// Modifiers
-			template <class InputIterator>
-			void assign (InputIterator first, InputIterator last) {
+			// template <class InputIterator>
+			// void assign (InputIterator first, InputIterator last) {
 				
-			};
+			// };
 
-			void assign (size_type n, const value_type& val) {
+			// void assign (size_type n, const value_type& val) {
 
-			};
+			// };
 
 			void	push_back(const value_type& val) {
 				if (size() + 1 > capacity())

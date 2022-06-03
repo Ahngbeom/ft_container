@@ -3,7 +3,8 @@ NAME = a.out
 MAIN = main.cpp
 
 CXX = c++
-CXXFLAGS = #-Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+# CXXFLAGS = -Wc++11-extensions
 INCFLAGS = -I ./includes -I ./vector_test
 
 SRSC_DIR = #./srcs/

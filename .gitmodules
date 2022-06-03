@@ -1,3 +1,6 @@
 [submodule "test/ft_container-unit-test"]
 	path = test/ft_container-unit-test
 	url = https://github.com/divinepet/ft_containers-unit-test.git
+[submodule "test/ft_container-tests"]
+	path = test/ft_container-tests
+	url = https://github.com/mamoussa405/ft_containers_tests.git
